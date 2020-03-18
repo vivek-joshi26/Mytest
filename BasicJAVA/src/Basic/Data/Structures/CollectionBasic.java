@@ -1,10 +1,11 @@
 package Basic.Data.Structures;
 
 import java.util.*;
+import java.util.LinkedList;
 
 public class CollectionBasic {
 
-    public static void compareList(List l1, List l2){
+    public static void compareList(Collection<String> l1, Collection<String>  l2){
         Iterator it=l1.iterator();
         while (it.hasNext()){
             if(l2.contains(it.next())){
@@ -12,7 +13,27 @@ public class CollectionBasic {
             }
 
         }
+    }
 
+    public static void printme(List<String> list){
+        for (String b:list
+             ) {
+            System.out.print(b+" ");
+
+        }
+        System.out.println();
+    }
+
+    public static void removeStuff(List<String> list, int from, int to){
+        list.subList(from,to).clear();
+    }
+
+    public static void reverse(List<String> list){
+        ListIterator<String> itr=list.listIterator(list.size());
+        while (itr.hasPrevious()){
+            System.out.print(itr.previous()+" ");
+        }
+        System.out.println();
 
     }
 
@@ -52,7 +73,29 @@ public class CollectionBasic {
             System.out.print(l1.get(i)+" ");
         }
 
-        System.out.println();
+        System.out.println("LinkedList");
+        String[] things={"apples","noobs","poiu","bacon","goats"};
+        List<String> list1=new LinkedList<String>();
+        for (String z:things
+             ) {
+            list1.add(z);
+        }
+
+        String[] things2={"sausage","harrypotter","bacon","goats"};
+        List<String> list2=new LinkedList<String>();
+        for (String w:things2
+        ) {
+            list2.add(w);
+        }
+
+        list1.addAll(list2);    //list1 will have data of list2
+        list2=null;
+
+        printme(list1);
+        removeStuff(list1,2,5);
+        printme(list1);
+        reverse(list1);
+        printme(list1);
 
     }
 }
